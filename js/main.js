@@ -221,8 +221,41 @@ function createPlanetSizeChart() { /* same as original */ }
 // Interactive size comparison tool
 function createSizeComparison() { /* same as original */ }
 
-// Cosmic distance calculator
-function createDistanceCalculator() { /* same as original */ }
+// Galaxy distance calculator
+function createDistanceCalculator() {
+    const calculator = document.getElementById('distanceCalculator');
+    const galaxySelect = document.getElementById('galaxyDistanceSelect');
+    const distanceResult = document.getElementById('galaxyDistanceResult');
+    const travelTimeResult = document.getElementById('galaxyTravelTimeResult');
+
+    if (!calculator || !galaxySelect || !distanceResult || !travelTimeResult) return;
+
+    const galaxies = {
+        milkyWay: 26500,
+        andromeda: 2537000,
+        triangulum: 2730000,
+        largeMagellanicCloud: 163000,
+        smallMagellanicCloud: 200000
+    };
+
+    function formatDistance(lightYears) {
+        if (lightYears >= 1000000) {
+            return `${(lightYears / 1000000).toFixed(2)} million light-years`;
+        }
+        return `${lightYears.toLocaleString()} light-years`;
+    }
+
+    function updateDistance() {
+        const distance = galaxies[galaxySelect.value];
+        if (!distance) return;
+
+        distanceResult.textContent = formatDistance(distance);
+        travelTimeResult.textContent = `${formatDistance(distance).replace(' light-years', '')} years at the speed of light`;
+    }
+
+    galaxySelect.addEventListener('change', updateDistance);
+    updateDistance();
+}
 
 // Initialize all features
 document.addEventListener('DOMContentLoaded', function() {

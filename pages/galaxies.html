@@ -436,7 +436,22 @@
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="info-card">
                         <h4>Galaxy Distance Calculator</h4>
-                        <div id="distanceCalculator"></div>
+                        <p class="text-secondary">Select a galaxy to see its approximate distance from Earth and the light-travel time.</p>
+                        <div id="distanceCalculator">
+                            <label for="galaxyDistanceSelect" class="form-label">Choose a galaxy</label>
+                            <select id="galaxyDistanceSelect" class="form-select mb-3" aria-describedby="galaxyDistanceHelp">
+                                <option value="milkyWay">Milky Way (galactic center)</option>
+                                <option value="andromeda">Andromeda Galaxy</option>
+                                <option value="triangulum">Triangulum Galaxy</option>
+                                <option value="largeMagellanicCloud">Large Magellanic Cloud</option>
+                                <option value="smallMagellanicCloud">Small Magellanic Cloud</option>
+                            </select>
+                            <p id="galaxyDistanceHelp" class="small text-secondary">Distances are approximate astronomical measurements.</p>
+                            <div class="result-display mt-3" aria-live="polite">
+                                <div class="mb-2"><strong>Distance:</strong> <span id="galaxyDistanceResult" class="data-badge">26,500 light-years</span></div>
+                                <div class="small"><strong>Light-travel time:</strong> <span id="galaxyTravelTimeResult">26,500 years</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
