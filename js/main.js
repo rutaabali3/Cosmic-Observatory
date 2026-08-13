@@ -215,7 +215,74 @@ function createGalaxySizeChart() {
         }
     });
 }
-function createStellarMassChart() { /* same as original */ }
+function createStellarMassChart() {
+    const ctx = document.getElementById('stellarMassChart');
+    if (!ctx) return;
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['< 0.1', '0.1–0.5', '0.5–1', '1–8', '> 8'],
+            datasets: [{
+                label: 'Approximate share of stars (%)',
+                data: [5, 45, 35, 12, 3],
+                backgroundColor: [
+                    'rgba(116, 185, 255, 0.85)',
+                    'rgba(162, 155, 254, 0.85)',
+                    'rgba(253, 203, 110, 0.85)',
+                    'rgba(225, 112, 85, 0.85)',
+                    'rgba(253, 121, 168, 0.85)'
+                ],
+                borderColor: [
+                    '#74b9ff',
+                    '#a29bfe',
+                    '#fdcb6e',
+                    '#e17055',
+                    '#fd79a8'
+                ],
+                borderWidth: 2,
+                borderRadius: 8
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: { color: '#ffffff' }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: items => `${items[0].label} solar masses`,
+                        label: item => ` Approx. ${item.raw}% of stars`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 50,
+                    title: {
+                        display: true,
+                        text: 'Share of stars (%)',
+                        color: '#b2bec3'
+                    },
+                    ticks: { color: '#b2bec3' },
+                    grid: { color: 'rgba(108, 92, 231, 0.2)' }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Stellar mass (solar masses)',
+                        color: '#b2bec3'
+                    },
+                    ticks: { color: '#b2bec3' },
+                    grid: { color: 'rgba(108, 92, 231, 0.2)' }
+                }
+            }
+        }
+    });
+}
 function createPlanetSizeChart() { /* same as original */ }
 
 // Interactive size comparison tool
