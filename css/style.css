@@ -789,6 +789,42 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* Single-container body layout */
+/* Keep navigation and footer grids intact, while stacking all page content vertically. */
+.content-section .row,
+.page-header .row,
+.hero-section .row {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.content-section .row > [class*="col-"],
+.page-header .row > [class*="col-"],
+.hero-section .row > [class*="col-"] {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    flex: none;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.content-section .row > [class*="order-"],
+.page-header .row > [class*="order-"],
+.hero-section .row > [class*="order-"] {
+    order: initial !important;
+}
+
+.content-section .info-card,
+.content-section .chart-container,
+.content-section .feature-card,
+.content-section .stat-card {
+    height: auto;
+    min-height: 0;
+}
+
 /* Page-specific styles for content pages */
 .page-header {
     background: var(--gradient-primary);
